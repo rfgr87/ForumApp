@@ -1,3 +1,5 @@
+    #require_relative 'pry'
+
 class CommentsController < ApplicationController
     
     def index
@@ -10,8 +12,10 @@ class CommentsController < ApplicationController
         render json: @comment.to_json
     end
        
-    def delete
-        @comment = Comment.find_by(id: params[:id]).delete
+    def destroy
+        #binding.pry
+        @comment = Comment.find_by(comment_params)
+        @comment.destroy
         render json: @comment.to_json
     end
     

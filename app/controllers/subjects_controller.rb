@@ -1,19 +1,18 @@
 class SubjectsController < ApplicationController
 
     def create
-        @user = User.create(comment_params)
+        @user = Subject.create(comment_params)
         render json: @user.to_json
     end
    
     def delete
-        @user = User.find_by(id: params[:id]).delete
+        @user = Subject.find_by(id: params[:id]).destroy
         render json: @user.to_json
     end
 
-  private
-
-        
+    private
+    
     def subject_params
-        params.require(:subject).permit(:info)
+        params.require(:subject).permit(:theme)
     end
 end
