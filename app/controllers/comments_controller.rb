@@ -13,8 +13,7 @@ class CommentsController < ApplicationController
     end
        
     def destroy
-        #binding.pry
-        @comment = Comment.find_by(comment_params)
+        @comment = Comment.find(params[:id])
         @comment.destroy
         render json: @comment.to_json
     end

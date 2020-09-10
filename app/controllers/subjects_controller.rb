@@ -1,5 +1,10 @@
 class SubjectsController < ApplicationController
 
+    def index
+        @subjects = Subject.all      
+        render json: @subjects.to_json
+    end
+   
     def create
         @user = Subject.create(comment_params)
         render json: @user.to_json
